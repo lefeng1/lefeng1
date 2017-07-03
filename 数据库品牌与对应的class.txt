@@ -1,0 +1,42 @@
+
+面膜：class:面膜
+品牌：丽得姿、LEADERS INSOLUTION、伊丽莎白.长耳熊、SNP、IT°S SKIN、COREANA、too cool for school、leaders step solution、韩束、婵真
+	   
+
+洗发水：class:洗发水
+品牌：'AVALON ORGANICS','陶丝','发朵','gentology','红色小象','The answer is WHY'，LG
+	   
+	   
+雨伞：class:雨伞
+品牌：Banana Umbrella	
+
+
+服饰：服饰
+品牌：'花花公子','奢步士','俞兆林','森宿','布布发现','纤丝鸟','依曼丽','麦子熟了','艾欧唯','迪赛尼斯','David Mayer Naman','YZC'
+
+
+
+围巾：class:围巾
+品牌：KK&SOPHIA
+
+梳子：class:梳子
+品牌：Tangle Teezer
+
+美白：class:美白
+品牌：欧诗漫
+
+鞋子：class:鞋子
+品牌：本那
+
+布制品：class:布制品
+品牌：伊加
+
+
+床上用品：class:床上用品
+品牌：施酷比，居乐依
+
+旅游：class:旅游
+品牌：南湖国旅
+
+内衣：class:内衣
+品牌：依曼丽

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+   <meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+	<link rel="stylesheet" href="../css/a.css">
+</head>
+<body>
+	<div id="container" hijack_check_flag="1">
+   <div data-reactroot="">
+    <div>
+     <div class="_3FmPsJubKs-Ys_FH8ksXO4"></div>
+     <div class="_2qMs9THP2bUpWIAG1OhCmP">
+      <div class="_1bIecDkNapDGLpwch2H9cH ispinner--animating">
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+       <div class="ispinner__blade"></div>
+      </div>
+      <p>加载中</p>
+     </div>
+    </div>
+    <div class="VV_a2sp4qszHgb-KT46Lr _20auLZSQbT2B8dLwvRTgZ5">
+     <div class="_38_Z28Q4LpfXqInYVZPJZI">
+      <header class="clearfix">
+       <i class="icon-arrow-left ui-decoration-hyperlink"></i>
+       <div class="content">
+        注册
+       </div>
+       <span class="right-btn ui-decoration-hyperlink"><i class="img-icon home"></i></span>
+      </header>
+     </div>
+     <!-- react-empty: 68 -->
+     <form>
+      <div>
+       <div class="_3q4mrjJOs4yXQXAAlhODfw">
+        <input type="text" name="userName" placeholder="已验证手机/用户名/邮箱" / id="username">
+        <i class="icon-cancel ui-decoration-hyperlink"></i>
+       </div>
+       <div class="_3q4mrjJOs4yXQXAAlhODfw">
+        <input type="password" name="password" placeholder="密码" / id="password">
+        <i class="eye ui-decoration-hyperlink"></i>
+       </div>
+       <input type="hidden" name="sessionId" value="" />
+       <label class="checkbox-item checked"><span class="check-box"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAUCAYAAAB8gkaAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABLUlEQVRIx7XUTytEURgH4JFINlZWRikTpZSSpJTSFFlMUhZslIWVUla+gYW9T+AL2NnYW9tYKCVKlFBDSB4LR96mhvl3383t3vs773POubeTy2VcWMRi1k4O277rE31ZQlt+6wxdWUGbaTVwjnxW0EaALtCfFbQeoEsMZAWt4SNBVxisFuxoEloJ0DUK1YJ7eMdqg9BygG4w/Ff4KAXfMFsntJQmCncY+W9AIQXhEaM1QqU0wR+opnE5TOI5fNz8P/mFAN1jrN69L4W9P0VPldwcXlPuAeN1QaHRTjhijtFZ8b4YduAREw1BoeF+AA/Qlp7PBOgJU01BqWk7DgO4i2mU030Z001DAezGSQBf0vUZMy2DAtibTmwBKrYcCmABt+kvnc8MqljhUCt6fQGOvedru0RGQwAAAABJRU5ErkJggg==" /></span><span class="name">同意条款</span><input type="hidden" name="rememberMe" value="true" /></label>
+       <span class="btn-primary" type="submit" id="register">注册</span>
+       <aside></aside>
+       <aside class="link">
+        <a href="./login.html">立即登录</a>
+        <a>忘记密码</a>
+       </aside>
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+</body>
+ <script src="../js/jquery-3.1.1.min.js"></script>
+   <script>
+    $('#register').on('click', function() {
+
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost:3000/jia',
+            data: {
+                username: $('#username').val(),
+                password: $('#password').val()
+
+            },
+            // dataType:'json',
+            success: function(res) {
+                console.log(res);
+                if (res === 'no') {
+                  alert('用户名存在')
+                    return false;
+                }else{
+                    alert('注册成功');
+                    window.location.href="./login.html"
+                }
+            
+
+            }
+        })
+    })
+
+    $('.home').on('click',function(){
+        window.location.href="../index.html"
+    })
+
+    $('.eye').on('click',function(){
+        if ($(this).is('.active')) {
+            $(this).removeClass('active')
+          $('#password').attr('type','password')
+
+        }else{
+
+         $(this).addClass('active')
+          $('#password').attr('type','text')
+        }
+    })
+    $('.icon-arrow-left').on('click',function(){
+        location.href='javascript:history.go(-1)'
+    })
+    </script>
+</html>

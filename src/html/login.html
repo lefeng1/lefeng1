@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+    <meta name="apple-itunes-app" content="app-id=454755312">
+    <title>登录页</title>
+    <link rel="shortcut icon" href="https://h5rsc-ssl.vipstatic.com/lefeng/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://h5rsc-ssl.vipstatic.com/lefeng/img/touch-icon.png">
+    <link rel="stylesheet" href="../css/deng.css">
+    <link rel="stylesheet" href="../css/weui.css">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/login.js"></script>
+</head>
+<body ontouchstart="" class="">
+    <div id="container" hijack_check_flag="1">
+        <div data-reactroot="">
+            <div>
+                <div class="_3FmPsJubKs-Ys_FH8ksXO4"></div>
+                <div class="_2qMs9THP2bUpWIAG1OhCmP">
+                    <div class="_1bIecDkNapDGLpwch2H9cH ispinner--animating">
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                        <div class="ispinner__blade"></div>
+                    </div>
+                    <p>加载中</p>
+                </div>
+            </div>
+            <div class="VV_a2sp4qszHgb-KT46Lr _20auLZSQbT2B8dLwvRTgZ5">
+                <div class="_38_Z28Q4LpfXqInYVZPJZI">
+                    <header class="clearfix"><i class="icon-arrow-left ui-decoration-hyperlink bback"></i>
+                        <div class="content">登录</div><span class="right-btn ui-decoration-hyperlink"><i class="img-icon home"></i></span></header>
+                </div>
+                <!-- react-empty: 27 -->
+                <form style="margin-top: .3rem">
+                    <div>
+                        <div class="_3q4mrjJOs4yXQXAAlhODfw">
+                            <input type="text" name="userName" placeholder="已验证手机/用户名/邮箱" id="username">
+                            <i class="icon-cancel ui-decoration-hyperlink"></i>
+                        </div>
+                        <div class="_3q4mrjJOs4yXQXAAlhODfw">
+                            <input type="password" name="password" placeholder="密码" id="password">
+                            <i class="eye ui-decoration-hyperlink"></i>
+                        </div>
+                        <input type="hidden" name="sessionId" value="">
+                        <label class="checkbox-item checked"><input class="check-box"  type="checkbox" style="margin-top: 10px" id="check"><span class="name">七天内免登录</span>
+                        
+                            <input type="hidden" name="rememberMe" value="true">
+                        </label>
+                        <p class="tips-error" style="display: none;">用户名或密码有误</p>
+                        <!-- <button class="btn-primary" type="submit">登 录</button> -->
+                        <span class="btn-primary" id="btnReg">登录</span>
+                        <aside></aside>
+                        <aside class="link"><a href="./reg.html">立即注册</a><a>忘记密码</a></aside>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="__vconsole" class="" growing-ignore="true" style="display: none;" hijack_check_flag="1">
+        <div class="vc-switch">vConsole</div>
+        <div class="vc-mask">
+        </div>
+        <div class="vc-panel">
+            <div class="vc-tabbar">
+                <a class="vc-tab" data-tab="default" id="__vc_tab_default">Log</a><a class="vc-tab" data-tab="system" id="__vc_tab_system">System</a><a class="vc-tab" data-tab="network" id="__vc_tab_network">Network</a></div>
+            <div class="vc-content">
+                <div class="vc-logbox" id="__vc_log_default">
+                    <div>
+                        <div class="vc-log" style="padding-bottom:40px"></div>
+                        <form class="vc-cmd">
+                            <button class="vc-cmd-btn" type="submit">OK</button>
+                            <div class="vc-cmd-input-wrap">
+                                <textarea class="vc-cmd-input" placeholder="command..."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="vc-logbox" id="__vc_log_system">
+                    <div>
+                        <div class="vc-log"></div>
+                    </div>
+                </div>
+                <div class="vc-logbox" id="__vc_log_network">
+                    <div class="vc-table">
+                        <dl class="vc-table-row">
+                            <dd class="vc-table-col vc-table-col-4">Name </dd>
+                            <dd class="vc-table-col">Status</dd>
+                            <dd class="vc-table-col">Time</dd>
+                        </dl>
+                        <div class="vc-log"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="vc-toolbar">
+                <a class="vc-tool vc-tool-default">Clear</a><a class="vc-tool vc-tool-system">Clear</a><a class="vc-tool vc-tool-network">Clear</a><a class="vc-tool vc-global-tool vc-tool-last vc-hide">Hide</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 遮罩层 -->
+    <div id="actionSheet_wrap">
+        <div class="weui-skin_android" id="weui-android-actionsheet" style="display: none">
+            <div class="weui-mask"></div>
+            <div class="weui-actionsheet">
+                <div class="weui-actionsheet__menu">
+                    <div class="weui-actionsheet__cell" style="background: black;color: white;text-align: center;">
+                        
+                    </div>
+                    <!-- <div class="weui-actionsheet__cell">
+                        <a href="javascript:;" class="weui-btn weui-btn_plain-primary">上传</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

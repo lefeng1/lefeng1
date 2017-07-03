@@ -41,6 +41,13 @@ $(function() {
                 success: function(res) {
                     console.log(res)
                     var html = res.detail.map(function(item) {
+//                  	var descriptions = item.descriptions.slice(1,-1).split('},{')
+//                  	console.log(descriptions)
+//                  	descriptions.map(function(items,i){
+//                  		console.log(i)
+//                  		return JSON.parse(items)
+//                  	})
+						console.log(typeof item.descriptions)
                         return `
 							<div class="_38_Z28Q4LpfXqInYVZPJZI">
                     			<header class="clearfix">
@@ -138,40 +145,58 @@ $(function() {
 			                        <table>
 			                            <tbody>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[0].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[0].value}</td>
+			                                    <th>${JSON.parse(item.descriptions)[0]?JSON.parse(item.descriptions)[0].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[0]?JSON.parse(item.descriptions)[0].value:''}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[1].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[1].value}</td>
+			                                    <th>${JSON.parse(item.descriptions)[1]?JSON.parse(item.descriptions)[1].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[1]?JSON.parse(item.descriptions)[1].value:''}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[2].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[2].value}</td>
+			                                    <th>${JSON.parse(item.descriptions)[2]?JSON.parse(item.descriptions)[2].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[2]?JSON.parse(item.descriptions)[2].value:''}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[3].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[3].value}</td>
+			                                   <th>${JSON.parse(item.descriptions)[3]?JSON.parse(item.descriptions)[3].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[3]?JSON.parse(item.descriptions)[3].value:''}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[4].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[4].value}</td>
+			                                    <th>${JSON.parse(item.descriptions)[4]?JSON.parse(item.descriptions)[4].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[4]?JSON.parse(item.descriptions)[4].value:''}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[5].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[5].value}</td>
+			                                    <th>${JSON.parse(item.descriptions)[5]?JSON.parse(item.descriptions)[5].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[5]?JSON.parse(item.descriptions)[5].value:''}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[6].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[6].value}</td>
+			                                    <th>${JSON.parse(item.descriptions)[6]?JSON.parse(item.descriptions)[6].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[6]?JSON.parse(item.descriptions)[6].value:''}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[7].name}</th>
-			                                    <td>${JSON.parse(item.descriptions)[7].value}</td>
+			                                    <th>${JSON.parse(item.descriptions)[7]?JSON.parse(item.descriptions)[7].name:''}</th>
+			                                    <td>${JSON.parse(item.descriptions)[7]?JSON.parse(item.descriptions)[7].value:''}</td>
 			                                </tr>
 			                            </tbody>
 			                        </table>
 			                        <div class="click-to-detail ui-decoration-hyperlink">点击查看图文详情</div>
+			                        <div class="image-detail" style="display:none">
+				                        <img src="${item.detailImage.split(',')[0]?item.detailImage.split(',')[0]:''}">
+			                        	<img src="${item.detailImage.split(',')[1]?item.detailImage.split(',')[1]:''}">
+			                        	<img src="${item.detailImage.split(',')[2]?item.detailImage.split(',')[2]:''}">
+			                        	<img src="${item.detailImage.split(',')[3]?item.detailImage.split(',')[3]:''}">
+			                        	<img src="${item.detailImage.split(',')[4]?item.detailImage.split(',')[4]:''}">
+			                        	<img src="${item.detailImage.split(',')[5]?item.detailImage.split(',')[5]:''}">
+			                        	<img src="${item.detailImage.split(',')[6]?item.detailImage.split(',')[6]:''}">
+			                        	<img src="${item.detailImage.split(',')[7]?item.detailImage.split(',')[7]:''}">
+			                        	<img src="${item.detailImage.split(',')[8]?item.detailImage.split(',')[8]:''}">
+			                        	<img src="${item.detailImage.split(',')[9]?item.detailImage.split(',')[9]:''}">
+			                        	<img src="${item.detailImage.split(',')[10]?item.detailImage.split(',')[10]:''}">
+			                        	<img src="${item.detailImage.split(',')[11]?item.detailImage.split(',')[11]:''}">
+			                        	<img src="${item.detailImage.split(',')[12]?item.detailImage.split(',')[12]:''}">
+			                        	<img src="${item.detailImage.split(',')[13]?item.detailImage.split(',')[13]:''}">
+			                        	<img src="${item.detailImage.split(',')[14]?item.detailImage.split(',')[14]:''}">
+			                        	<img src="${item.detailImage.split(',')[15]?item.detailImage.split(',')[15]:''}">
+			                        </div>
 			                    </section>
 			                    <ul class="note" style="display: none;">
 			                        <li>
@@ -190,7 +215,7 @@ $(function() {
 			                            <p> </p>
 			                            <p>1、非乐蜂销售的商品，或有明显使用痕迹影响二次销售的商品；</p>
 			                            <p>2、法律明确规定不适用七天无理由退货的商品；</p>
-			                            <p>3、基于安全及健康的考虑，已拆封的食品、药品、保健品、化妆品、贴身用品等；</p>
+			                            <p>2、基于安全及健康的考虑，已拆封的食品、药品、保健品、化妆品、贴身用品等；</p>
 			                            <p>4、已经激活的手机、电脑、数码产品等；</p>
 			                            <p>5、已在线交付的充值类商品；</p>
 			                            <p>6、未经授权的维修、误用、碰撞、疏忽、滥用、进液、事故、改动、不正确的安装所造成的商品质量问题，或撕毁、涂改标贴、机器序号、防伪标记；</p>
@@ -230,6 +255,13 @@ $(function() {
                     }).join('')
 					
                     $('.lazyload-img-wraper').after(html);
+                    //点击查看图文详情
+                    $('.click-to-detail').click(function(){
+                    	console.log('ff')
+                    	$(".image-detail").css('display','block')
+                    	$(".click-to-detail").css('display','none')
+                    	
+                    })
                     $('.btn-primary').click(function(){
 	                    if(!this.username){
 	                    	location.href='../html/login.html'

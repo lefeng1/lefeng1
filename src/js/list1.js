@@ -182,7 +182,7 @@ $(function() {
                         $('.lazyload-img-wraper').on('click',function(){
                             var id = $(this).parent().attr('id')
                             console.log(id)
-                            window.location.href = "../html/details.html?id="+id;
+                            window.location.href = "../html/details.html?id="+id+"&username="+username;
                         })
                         list1.fly();
                         // $(window).scroll(function(){

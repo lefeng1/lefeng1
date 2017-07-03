@@ -41,7 +41,7 @@
                     <div class="right"></div>
                 </div>
                 <div class="_38_Z28Q4LpfXqInYVZPJZI">
-                    <header class="clearfix"><i class="icon-arrow-left ui-decoration-hyperlink"></i>
+                    <header class="clearfix"><i class="icon-arrow-left ui-decoration-hyperlink bback"></i>
                         <div class="content">我的蜂巢</div><span class="right-btn ui-decoration-hyperlink"><i class="img-icon home"></i></span></header>
                 </div>
                 <div class="head">
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                             <p class="name" id="msg">登陆 / 注册</p>
-                             <i class="avatar1"><img src="img/1.gif" alt="" style="width: 100%;height: 100%" class="headpic1"></i>
+                             <i class="avatar1"><img src="../img/1.gif" alt="" style="width: 100%;height: 100%" class="headpic1"></i>
                         </div>
                     </div>
                     <div class="bg"></div>
@@ -71,7 +71,10 @@
                     <a class="ui-decoration-hyperlink item" href="/orderlist/all">
                         <!-- react-text: 36 -->我的订单
                         <!-- /react-text --><b class="txt">全部订单</b><i class="icon-navigate_next"></i></a>
-                    <div class="order-tab"><a class="ui-decoration-hyperlink" href="/orderlist/unpay"><i class="img-icon order-unpay"></i><p>待支付</p></a><a class="ui-decoration-hyperlink" href="/orderlist/ungot"><i class="img-icon order-ungot"></i><p>待收货</p></a><a class="ui-decoration-hyperlink" href="/orderlist/uncomment"><i class="img-icon order-uncomment"></i><p>待评价</p></a></div>
+                        <script>
+                        	
+                        </script>
+                    <div class="order-tab"><a class="ui-decoration-hyperlink buycar"><i class="img-icon order-unpay"></i><p>待支付</p></a><a class="ui-decoration-hyperlink" href="/orderlist/ungot"><i class="img-icon order-ungot"></i><p>待收货</p></a><a class="ui-decoration-hyperlink" href="/orderlist/uncomment"><i class="img-icon order-uncomment"></i><p>待评价</p></a></div>
                 </div>
                 <!-- react-empty: 49 -->
                 <div class="ui-decoration-hyperlink item padding">
@@ -107,7 +110,7 @@
 // })
 // $('.weui-actionsheet__cell').on('click', function() {
 //     $.ajax({
-//         url: 'http://localhost:7890/upload-single',
+//         url: 'http://localhost:3000/upload-single',
 //         type: 'POST',
 //         cache: false, //不必须
 //         data: new FormData($('#uploadForm')[0]),
@@ -115,14 +118,29 @@
 //         contentType: false,
 //         success: function(data) {
 //             console.log(data)
-//             $(".headpic").attr("src", "http://localhost:7890/" + data.imgInfo[0].filename)
+//             $(".headpic").attr("src", "http://localhost:3000/" + data.imgInfo[0].filename)
 //         }
 //     })
 // })
-$('.home').on('click', function() {
-    window.location.href = "http://localhost/3jieduan/app%E9%A1%B9%E7%9B%AE/"
-})
 
+var param = location.search.slice(1)
+var arr = param.split('&')
+var username = '';
+arr.forEach(function(items) {
+	var temp = items.split('=')
+	if(temp[0] == 'username') {
+		username = temp[1]
+	}
+})
+$('.home').on('click', function() {
+    window.location.href = "../index.html?username="+username
+})
+$('.buycar').click(function(){
+	location.href='buycar.html?username='+username
+})
+$('.bback').click(function(){
+	history.back();
+})
 var msg = document.getElementById('msg');
 
 // 读取cookie
@@ -151,11 +169,11 @@ tui.onclick = function() {
 
     document.cookie = 'username=null;expires=' + now.toUTCString();
 
-    location.href = 'http://localhost/3jieduan/app%E9%A1%B9%E7%9B%AE/deng.html';
+    location.href = './login.html';
     // }
 }
 $('#msg').on('click', function() {
-    window.location.href = "http://localhost/3jieduan/app%E9%A1%B9%E7%9B%AE/reg.html";
+    window.location.href = "./login.html";
 
 })
 $('#com').on('click', function() {
@@ -174,7 +192,7 @@ if ($('#msg').val() == '登陆 / 注册') {
     String(msg)
     $.ajax({
         type: 'post',
-        url: 'http://localhost:7890/tu',
+        url: 'http://localhost:3000/tu',
         data: {
             msg: msg
         },
@@ -191,7 +209,7 @@ if ($('#msg').val() == '登陆 / 注册') {
 console.log($('.headpic').attr('src'))
 
             if ($('.headpic').attr('src')=='null') {
-                    $('.headpic').attr('src','img/1.gif')
+                    $('.headpic').attr('src','../img/1.gif')
                 }
             $('.avatar').on('click', function() {
                 $('#androidActionsheet').show()
@@ -207,7 +225,7 @@ console.log($('.headpic').attr('src'))
             })
             $('.weui-actionsheet__cell').on('click', function() {
                 $.ajax({
-                    url: 'http://localhost:7890/upload-single',
+                    url: 'http://localhost:3000/upload-single',
                     type: 'POST',
                     cache: false, //不必须
                     data: new FormData($('#uploadForm')[0]),
@@ -215,11 +233,11 @@ console.log($('.headpic').attr('src'))
                     contentType: false,
                     success: function(data) {
                         console.log(data)
-                        $(".headpic").attr("src", "http://localhost:7890/" + data.imgInfo[0].filename)
+                        $(".headpic").attr("src", "http://localhost:3000/" + data.imgInfo[0].filename)
                         // console.log($(".headpic").attr('src'))
                         $.ajax({
                             type:'post',
-                            url:'http://localhost:7890/tupian',
+                            url:'http://localhost:3000/tupian',
                             data:{
                                 msg:msg,
                                 img:$(".headpic").attr('src')

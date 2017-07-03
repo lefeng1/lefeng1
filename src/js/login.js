@@ -1,9 +1,10 @@
 $(function() {
     var login = {
         verify: function() {
-            
+
             $('.btn-primary').on('click', function() {
                 var phone = $('#username').val();
+                var username = $('#username').val();
                 var password = $('#password').val();
                 var reg = /^[\d\D]+$/;
 
@@ -34,7 +35,7 @@ $(function() {
                                 if (data == 'no') {
                                     $('.tips-error').show();
                                 } else if (data == 'ok') {
-                                    alert('登录成功');
+//                                  alert('登录成功');
                                     var check = document.getElementById('check');
 
                                     // $('#btnReg').on('click', function() {
@@ -64,7 +65,7 @@ $(function() {
                                         arr.forEach(function(item) {
                                             var temp = item.split('=');
                                             if (temp[0] === 'username') {
-                                                location.href = './deng.html';
+                                                location.href = './deng.html?username='+username;
                                             }
                                         });
                                     }
@@ -82,7 +83,7 @@ $(function() {
 
         login:function(){
                 $('.home').on('click',function(){
-                    window.location.href="../index.html"
+                    window.location.href="../index.html?username="+username
                 })
                 $('.bback').on('click',function(){
                     window.history.back()

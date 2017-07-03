@@ -11,7 +11,7 @@ function createConnection() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'lefengwang'
+        database: 'app'
     });	
     return connection
 }
@@ -232,25 +232,37 @@ app.post('/upload-single', upload.any(), function(req, res, next) {
 
 //注册页面
 app.post('/jia',function(req,res){
-	 var connection = createConnection()
+	var connection=createConnection();
 	connection.connect();
 
 	var username = req.body.username;
 	var password = req.body.password;
+ 	var userAddSql="INSERT INTO register(username,password) VALUES('"+username+"','"+password+"')"
 
-	// var getid =zhi.zhi;
-	// console.log(zhi)
-	var userAddSql="INSERT INTO user(username,password) VALUES('"+username+"','"+password+"')"
-		 console.log(req.query)
-
-	connection.query(userAddSql,function(error, results, fields){
+	var userAddSqla="select username from register where username='"+username+"'"
+	connection.query(userAddSqla,function(error, results, fields){
 		if (error) {
 			throw error;
 		}
+		var obj={
+			news:results
+		}
+		if (obj.news.length>0) {
+			res.send('no');
+			
+		}else{
 
-		res.send('ok')
+		connection.query(userAddSql,function(error, results, fields){
+			if (error) {
+				throw error;
+			}
+
+			res.send('ok')
+			})
+		}
 	})
 	res.append('Access-Control-Allow-Origin',"*")
+
 })
 
 

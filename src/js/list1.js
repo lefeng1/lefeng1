@@ -177,7 +177,9 @@ $(function() {
                         // 点击跳转详情页
                         $('.lazyload-img-wraper').on('click',function(){
                             var id = $(this).parent().attr('id')
-                            window.location.href = "../html/details.html?id="+id;
+                            console.log(id)
+                            window.location.href = "../html/details.html?id="+id+"&username="+username;
+
                         })
                         list1.fly();
                         // $(window).scroll(function(){

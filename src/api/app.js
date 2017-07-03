@@ -10,8 +10,8 @@ function createConnection() {
     connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'root',
-        database: 'lefengnet'
+        password: '',
+        database: 'lefengwang'
     });
 }
 //配置post body

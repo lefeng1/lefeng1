@@ -1,6 +1,5 @@
 $(function() {
-
-	var list1 = {
+var list1 = {
 		init: function() {
 
 			var page = 1;
@@ -131,6 +130,7 @@ $(function() {
 						var ul = $('<ul class="clearfix"></ul>');
 						var html = data.jobs.map(function(item) {
 							return `
+
                                      <li class="_3dznqSdmEYuOI-7s36xTkF Ekwoj4AzxaaLKz3hCWWQv clearfix" id="${item.gid}">
                                         <!-- react-empty: 2152 -->
                                         <div class="lazyload-img-wraper img loaded">
@@ -152,6 +152,7 @@ $(function() {
                                         </div>
                                     </li>
                                 `
+
 						}).join('');
 
 						ul.html(html);
@@ -319,3 +320,4 @@ $(function() {
 	list1.join();
 
 })
+

@@ -19,6 +19,7 @@ $(function() {
             $('._2je43mssPpq3rot5HNhUEl').click(function(){
                 location.href='../html/buycar.html?username='+username
             })
+            
             $('.home').click(function(){
                 location.href='../index.html?username='+username
             })
@@ -58,7 +59,6 @@ $(function() {
                     })
                 }
             })
-            console.log(Class)
                 // 点击筛选出现
             $('i.filter').parent().on('click', function() {
                     $('._1u1iuEeNLuruAqLXg8xrdz').show();
@@ -89,7 +89,6 @@ $(function() {
                     luyou = 'descending';
                     loadMore(luyou);
                 } else {
-                    console.log(555)
                     $(this).children().addClass('asc').removeClass('desc')
                     $('.goodslist').html('');
                     luyou = 'ascending';
@@ -98,9 +97,8 @@ $(function() {
 
             })
 
-
-
             loadMore(luyou);
+            // 滚动分页加载
             $(window).on('scroll', function() {
                 // 滚动条距离顶部的距离 大于 px时
 
@@ -116,7 +114,7 @@ $(function() {
             function increase() {
 
             }
-
+            // 加载函数
             function loadMore(louyou) {
                 console.log(taxon)
                 $.ajax({
@@ -124,7 +122,6 @@ $(function() {
                     url: "http://localhost:3000/" + louyou,
                     async: true,
                     dataType: "json",
-
                     data: {
                         page: page,
                         Class: Class,
@@ -160,7 +157,6 @@ $(function() {
 
                         ul.html(html);
                         $('.bback').click(function(){
-                            console.log(111)
                             history.back()
                         })
                         setTimeout(function(){
@@ -181,7 +177,6 @@ $(function() {
                         // 点击跳转详情页
                         $('.lazyload-img-wraper').on('click',function(){
                             var id = $(this).parent().attr('id')
-                            console.log(id)
                             window.location.href = "../html/details.html?id="+id;
                         })
                         list1.fly();

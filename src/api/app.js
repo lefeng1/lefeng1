@@ -4,15 +4,16 @@ var app = express();
 var mysql = require("mysql");
 var multer = require('multer');
 
-var connection;
+//var connection;
 
 function createConnection() {
-    connection = mysql.createConnection({
+    var connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
         password: '',
         database: 'lefengwang'
-    });
+    });	
+    return connection
 }
 //配置post body
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -21,7 +22,7 @@ app.use(bodyParser.json())
 
 //列表页查询数据库
 app.get('/jobs', function(req, res) {
-    createConnection()
+    var connection = createConnection()
     connection.connect();
     console.log(req.query)
      var Class = req.query.Class;
@@ -35,7 +36,8 @@ app.get('/jobs', function(req, res) {
             jobs: results
         }
         res.send(JSON.stringify(obj));
-        // connection.end();
+        connection.end();
+
     });
     // console.log(req.query)
     res.append("Access-Control-Allow-Origin", "*")
@@ -44,7 +46,7 @@ app.get('/jobs', function(req, res) {
 
 // 列表页查询数据库降序查询
 app.get('/ascending', function(req, res) {
-    createConnection()
+     var connection = createConnection()
     connection.connect();
     console.log(111)
    //ajax 分页传入
@@ -57,14 +59,14 @@ app.get('/ascending', function(req, res) {
             jobs: results
         }
         res.send(JSON.stringify(obj));
-        // connection.end();
+           connection.end();
     });
     res.append("Access-Control-Allow-Origin", "*")
 })
 
 // 列表页查询数据库升序
 app.get('/descending', function(req, res) {
-    createConnection()
+     var connection = createConnection()
     connection.connect();
     console.log(111)
    //ajax 分页传入
@@ -77,14 +79,14 @@ app.get('/descending', function(req, res) {
             jobs: results
         }
         res.send(JSON.stringify(obj));
-        // connection.end();
+           connection.end();
     });
     res.append("Access-Control-Allow-Origin", "*")
 })
 
 // 列表页查询数据库分类
 app.get('/classify', function(req, res) {
-    createConnection()
+    var connection = createConnection()
     connection.connect();
    //ajax 分页传入
     var pageCount = 10 * (req.query.page - 1)
@@ -97,7 +99,7 @@ app.get('/classify', function(req, res) {
             jobs: results
         }
         res.send(JSON.stringify(obj));
-        // connection.end();
+           connection.end();
     });
     res.append("Access-Control-Allow-Origin", "*")
 })
@@ -106,7 +108,7 @@ app.get('/classify', function(req, res) {
 
 // 数据库查id进入详情页
 app.post('/detail', function(req, res) {
-	createConnection();
+	 var connection = createConnection()
 	// console.log(req.body.id);
 	var id = req.body.id;
 	console.log(id)
@@ -131,7 +133,7 @@ app.post('/detail', function(req, res) {
 app.get('/addBuyCar', function(req, res) {
 	//  解决跨域
 	res.append("Access-Control-Allow-Origin", "*")
-	createConnection()
+	 var connection = createConnection()
 	connection.connect();
 
 	var gid = req.query.gid;
@@ -176,7 +178,7 @@ app.get('/addBuyCar', function(req, res) {
 				// 	status: true
 				// }
 				res.send(JSON.stringify(goodsArr));
-				// connection.end();
+				 connection.end();
 			})
 			
 		}else{
@@ -230,7 +232,7 @@ app.post('/upload-single', upload.any(), function(req, res, next) {
 
 //注册页面
 app.post('/jia',function(req,res){
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 
 	var username = req.body.username;
@@ -254,7 +256,7 @@ app.post('/jia',function(req,res){
 
 //登录页面
 app.post('/login',function(req,res){
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 
 	var username = req.body.phone;
@@ -288,7 +290,7 @@ app.post('/login',function(req,res){
 
 //通过id删除数据库信息
 app.post('/shan',function(req,res){
-		createConnection()
+		 var connection = createConnection()
 		connection.connect();
 	var id = req.body;
 	var getid =id.id;
@@ -310,7 +312,7 @@ app.post('/shan',function(req,res){
 app.get('/selectClass',function(req,res){
 	res.append('Access-Control-Allow-Origin',"*")
 	var Class = req.query.class
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 	connection.query(`SELECT brandStoreName FROM goods where class = '${Class}'`,function(rerr,data){
 		for(i=0;i<=data.length-2;i++){
@@ -329,7 +331,7 @@ app.get('/selectClass',function(req,res){
 
 //通过id更改数据库信息
 app.post('/gai',function(req,res){
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 	var id = req.body;
 	var getid =id.id;
@@ -351,7 +353,7 @@ app.post('/gai',function(req,res){
 		res.send('ok')
 	})
 	res.append('Access-Control-Allow-Origin',"*")
-	
+	connection.end();
 
 })
 
@@ -362,7 +364,7 @@ app.get('/buycarLoad', function(req, res) {
 
 	//  解决跨域
 	res.append("Access-Control-Allow-Origin", "*")
-	createConnection()
+	 var connection = createConnection()
 	connection.connect();
 	//引入查找模块
 	var username = req.query.username;
@@ -373,7 +375,7 @@ app.get('/buycarLoad', function(req, res) {
 		//把数据整理，返回到前端
 
 		res.send(JSON.stringify(results));
-
+		connection.end();
 	});
 	//	console.log(req.query)
 
@@ -383,7 +385,7 @@ app.get('/buycarLoad', function(req, res) {
 app.get('/buycarSelectId', function(req, res) {
 	//  解决跨域
 	res.append("Access-Control-Allow-Origin", "*")
-	createConnection()
+	 var connection = createConnection()
 	connection.connect();
 	//引入查找模块
 	var gid = req.query.gid ? req.query.gid : [];
@@ -397,7 +399,7 @@ app.get('/buycarSelectId', function(req, res) {
 			//把数据整理，返回到前端
 
 			res.send(JSON.stringify(results));
-
+			connection.end();
 		});
 
 	} else {
@@ -411,7 +413,7 @@ app.get('/buyCarRandomLoad', function(req, res) {
 
 	//  解决跨域
 	res.append("Access-Control-Allow-Origin", "*")
-	createConnection()
+	 var connection = createConnection()
 	connection.connect();
 
 	//引入查找模块
@@ -423,7 +425,7 @@ app.get('/buyCarRandomLoad', function(req, res) {
 	connection.query('select * from goods limit ' + pageBegin + ',' + pageCount, function(err, results, fields) {
 
 		res.end(JSON.stringify(results))
-
+		connection.end()
 	})
 
 })
@@ -434,7 +436,7 @@ app.get('/buyCarRandomLoad', function(req, res) {
 app.get('/minusBuyCar', function(req, res) {
 	//  解决跨域
 	res.append("Access-Control-Allow-Origin", "*")
-	createConnection()
+	 var connection = createConnection()
 	connection.connect();
 
 	var gid = req.query.gid;
@@ -486,7 +488,7 @@ app.get('/minusBuyCar', function(req, res) {
 //传进username,gid
 app.get('/delBuyCar', function(req, res) {
 	res.append("Access-Control-Allow-Origin", "*")
-	createConnection()
+	 var connection = createConnection()
 	connection.connect();
 
 	var gid = req.query.gid;
@@ -549,7 +551,7 @@ var upload =multer({
 
 //登录页面
 app.post('/cha',function(req,res){
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 
 	var username = req.body.username;
@@ -584,7 +586,7 @@ app.post('/cha',function(req,res){
 
 //通过id删除数据库信息
 app.post('/shan',function(req,res){
-		createConnection()
+		 var connection = createConnection()
 		connection.connect();
 	var id = req.body;
 	var getid =id.id;
@@ -604,7 +606,7 @@ app.post('/shan',function(req,res){
 
 //通过id更改数据库信息
 app.post('/gai',function(req,res){
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 	var id = req.body;
 	var getid =id.id;
@@ -632,7 +634,7 @@ app.post('/gai',function(req,res){
 
 //首页页查询数据库
 app.get('/index', function(req, res) {
-    createConnection()
+     var connection = createConnection()
     connection.connect();
     console.log(req.query)
    //ajax 分页传入
@@ -654,7 +656,7 @@ app.get('/index', function(req, res) {
 
 //查询当前id的图片
 app.post('/tu', function(req, res) {
-	createConnection();
+	 var connection = createConnection()
     connection.connect();
 	// console.log(req.body.id);
 	var msg = req.body.msg;
@@ -679,7 +681,7 @@ app.post('/tu', function(req, res) {
 })
 
 app.post('/tupian',function(req,res){
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 	var msg = req.body.msg;
 	var img = req.body.img;
@@ -701,7 +703,7 @@ app.post('/tupian',function(req,res){
 
 //历史记录
 app.post('/history',function(req,res){
-	createConnection();
+	 var connection = createConnection()
 	connection.connect();
 
 	var username = req.body.username;
@@ -734,7 +736,7 @@ app.post('/history',function(req,res){
 
 
 app.get('/look', function(req, res) {
-    createConnection()
+    var connection = createConnection()
     connection.connect();
     // console.log(req.query)
    //ajax 分页传入
@@ -746,7 +748,7 @@ app.get('/look', function(req, res) {
             jobs: results
         }
         res.send(JSON.stringify(obj));
-        // connection.end();
+           connection.end();
     });
     // console.log(req.query)
     res.append("Access-Control-Allow-Origin", "*")
@@ -754,7 +756,7 @@ app.get('/look', function(req, res) {
 
 //删除所有历史记录
 app.post('/qing',function(req,res){
-		createConnection()
+		 var connection = createConnection()
 		connection.connect();
 
 	var userAddSql="DELETE FROM historys "

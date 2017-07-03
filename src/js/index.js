@@ -166,7 +166,7 @@ $('.search-bar').on('click', function() {
     $("#shou").show()
 })
 $(".qu").on('click', function() {
-    window.location.href = "http://localhost/3jieduan/app%E9%A1%B9%E7%9B%AE/"
+     $("#shou").hide()
 
 })
 

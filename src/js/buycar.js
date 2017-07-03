@@ -65,7 +65,7 @@ $(function() {
 										<li class="_2x2q-D1HfUB-t0Mz-xT6p2 clearfix" gid='${items.gid}'>
 											<!-- react-empty: 177 -->
 											<div class="lazyload-img-wraper img loaded">
-												<div class="lazyload-img" style="background-image: url(&quot;${items.verticalImage}&quot;);"></div>
+												<div gid=${items.gid} class="lazyload-img" style="background-image: url(&quot;${items.verticalImage}&quot;);"></div>
 											</div>
 											<div class="info">
 												<h3><b></b><!-- react-text: 184 -->${items.name}<!-- /react-text --></h3>
@@ -77,6 +77,11 @@ $(function() {
 									}).join('')
 									
 									$(".car").html(carHtml)
+									//点击图片回到详情页
+									$(".lazyload-img").click(function(){
+										var gid = $(this).attr('gid')
+										location.href = '../html/details.html?id='+gid+'&username='+username
+									})
 									//点击删除该项和数据库中相关内容
 									$(".cart-delete").click(function() {
 

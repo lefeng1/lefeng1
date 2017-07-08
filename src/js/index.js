@@ -41,7 +41,7 @@ $('.list2').on('click',function(){
     window.location.href="./html/list1.html?Class=服饰&username="+username
 })
 $('.list3').on('click',function(){
-    window.location.href="./html/list1.html?Class=洗发水&username="+username
+    window.location.href="./html/list1.html?Class=洗浴&username="+username
 })
 $('.list4').on('click',function(){
     window.location.href="./html/list1.html?Class=旅游&username="+username
@@ -140,8 +140,9 @@ function loa() {
         success: function(data) {
             console.log(data.jobs)
             var html = data.jobs.map(function(item) {
+            	console.log(username)
                 return `       <li class="_12WPUxCZhYhpNDEXav7r1j">
-                <a href="/brand/800035815">
+                <a class="nav" name="${item.name}">
                     <div class="lazyload-img-wraper loaded" style="height: 141px;">
                         <div class="lazyload-img" style="background-image: url(${item.brandImage});"></div>
                     </div>
@@ -158,6 +159,9 @@ function loa() {
             }).join(" ")
 
             $("#clearfix").append(html);
+            $(".nav").click(function(){
+            	location.href="./html/list1.html?Class="+this.name+"&username="+username
+            })
         }
     })
 }
@@ -206,7 +210,7 @@ $('.shou').on('click', function() {
 
 //点击home返回首页
 $(".home").on('click', function() {
-    window.location.href = "http://localhost/3jieduan/app%E9%A1%B9%E7%9B%AE/"
+    window.location.href = "index.html"
 })
 
 $("._2zSykbfnp9HX1QFp7QarD5").on('click', '.highlight', function() {

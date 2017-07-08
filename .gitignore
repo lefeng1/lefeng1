@@ -1,8 +1,7 @@
-﻿#过滤node模块文件夹
-/node_modules
-
-
+﻿node_modules
+aaaaaaa.txt
 #过滤压缩包
 *.gz
 *.zip
 *.rar
+./src/api/node_modules

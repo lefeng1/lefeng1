@@ -82,11 +82,14 @@ $(function() {
                         			</div>
                         			<div class="pms-area">
 			                            <ul class="pms-tips">
-			                                <li><i>${JSON.parse(item.pmsList)[0].type}</i>
-			                                    <p>${JSON.parse(item.pmsList)[0].msg}</p>
+			                                 <li><i>${item.activeType.split(',')[0]?item.activeType.split(',')[0]:""}</i>
+			                                    <p>${item.activeMsg.split(',')[0]?item.activeMsg.split(',')[0]:''}</p>
 			                                </li>
-			                                <li><i>${JSON.parse(item.pmsList)[1].type}</i>
-			                                    <p>${JSON.parse(item.pmsList)[1].msg}</p>
+			                                <li><i>${item.activeType.split(',')[1]?item.activeType.split(',')[1]:""}</i>
+			                                    <p>${item.activeMsg.split(',')[1]?item.activeMsg.split(',')[1]:''}</p>
+			                                </li>
+			                                 <li><i>${item.activeType.split(',')[2]?item.activeType.split(',')[2]:""}</i>
+			                                    <p>${item.activeMsg.split(',')[2]?item.activeMsg.split(',')[2]:''}</p>
 			                                </li>
 			                               
 			                            </ul>
@@ -96,44 +99,41 @@ $(function() {
                     			<section class="_3AFVKtIpJA5G1Ph1VbnQnP">
 			                        <ul>
 			                            <li>
-			                                <!-- react-text: 60 -->商品评价
-			                                <!-- /react-text --><span class="ps"><!-- react-text: 62 -->（ <!-- /react-text --><!-- react-text: 171 -->1143<!-- /react-text --><!-- react-text: 64 --> ）<!-- /react-text --></span><span class="pull-right"><b>95.4%</b><!-- react-text: 140 -->好评<!-- /react-text --></span></li>
+			                                	商品评价
+			                                <span class="ps"></span><span class="pull-right"><b>${item.greatScale}</b>好评</li>
 			                            <li>
 			                                <div class="bar clearfix">
 			                                    <div class="grade"><span><i class="img-icon comment-like active"></i><!-- react-text: 146 -->满意<!-- /react-text --></span></div>
 			                                    <div class="pull-right">
-			                                        <!-- react-text: 148 -->${JSON.parse(item.commentContent)[0].authorName}
-			                                        <!-- /react-text --><span class="time">2017-6-30</span></div>
+			                                        <!-- react-text: 148 -->${item.authorName.split('%^&*')[0]}
+			                                        <!-- /react-text --><span class="time">${new Date(Number(item.postAt.split('%^&*')[0])).toLocaleDateString()}</span></div>
 			                                </div>
-			                                <div>${JSON.parse(item.commentContent)[0].content}</div>
+			                                <div>${item.content.split('%^&*')[0]}</div>
 			                            </li>
 			                            <li>
 			                                <div class="bar clearfix">
-			                                    <div class="grade"><span><i class="img-icon comment-like active"></i><!-- react-text: 156 -->满意<!-- /react-text --></span></div>
+			                                    <div class="grade"><span><i class="img-icon comment-like active"></i><!-- react-text: 146 -->满意<!-- /react-text --></span></div>
 			                                    <div class="pull-right">
-			                                        <!-- react-text: 158 -->${JSON.parse(item.commentContent)[1].authorName}
-			                                        <!-- /react-text --><span class="time">2017-6-29</span></div>
+			                                        <!-- react-text: 148 -->${item.authorName.split('%^&*')[1]}
+			                                        <!-- /react-text --><span class="time">${new Date(Number(item.postAt.split('%^&*')[0])).toLocaleDateString()}</span></div>
 			                                </div>
-			                                <div>${JSON.parse(item.commentContent)[1].content}</div>
+			                                <div>${item.content.split('%^&*')[1]}</div>
 			                            </li>
 			                            <li>
 			                                <div class="bar clearfix">
-			                                    <div class="grade"><span><i class="img-icon comment-like active"></i><!-- react-text: 166 -->满意<!-- /react-text --></span></div>
+			                                    <div class="grade"><span><i class="img-icon comment-like active"></i><!-- react-text: 146 -->满意<!-- /react-text --></span></div>
 			                                    <div class="pull-right">
-			                                        <!-- react-text: 168 -->${JSON.parse(item.commentContent)[2].authorName}
-			                                        <!-- /react-text --><span class="time">2017-6-29</span></div>
+			                                        <!-- react-text: 148 -->${item.authorName.split('%^&*')[2]}
+			                                        <!-- /react-text --><span class="time">${new Date(Number(item.postAt.split('%^&*')[0])).toLocaleDateString()}</span></div>
 			                                </div>
-			                                <div>${JSON.parse(item.commentContent)[2].content}</div>
+			                                <div>${item.content.split('%^&*')[2]}</div>
 			                            </li>
 			                        </ul>
                     			</section>
 			                    <ul class="pms-tips pollen">
 			                        <li><span><i>花粉</i></span>
 			                            <p>
-			                                <!-- react-text: 70 -->购买最多可获得
-			                                <!-- /react-text --><span class="highlight">59</span>
-			                                <!-- react-text: 72 -->个花粉
-			                                <!-- /react-text -->
+			                                ${item.pollenTips}
 			                            </p>
 			                        </li>
 			                    </ul>
@@ -145,36 +145,36 @@ $(function() {
 			                        <table>
 			                            <tbody>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[0]?JSON.parse(item.descriptions)[0].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[0]?JSON.parse(item.descriptions)[0].value:''}</td>
+			                                    <th>商品品牌:</th>
+			                                    <td>${item.brandStoreName}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[1]?JSON.parse(item.descriptions)[1].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[1]?JSON.parse(item.descriptions)[1].value:''}</td>
+			                                    <th>商品名称:</th>
+			                                    <td>${item.name}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[2]?JSON.parse(item.descriptions)[2].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[2]?JSON.parse(item.descriptions)[2].value:''}</td>
+			                                    <th>备注:</th>
+			                                    <td>${item.remark}</td>
 			                                </tr>
 			                                <tr>
-			                                   <th>${JSON.parse(item.descriptions)[3]?JSON.parse(item.descriptions)[3].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[3]?JSON.parse(item.descriptions)[3].value:''}</td>
+			                                   <th>有效期:</th>
+			                                    <td>${item.validity}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[4]?JSON.parse(item.descriptions)[4].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[4]?JSON.parse(item.descriptions)[4].value:''}</td>
+			                                   <th>规格:</th>
+			                                    <td>${item.standard}</td>
 			                                </tr>
 			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[5]?JSON.parse(item.descriptions)[5].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[5]?JSON.parse(item.descriptions)[5].value:''}</td>
+			                                   <th>特点描述:</th>
+			                                    <td>${item.channelFeatureList=="undefined"? '':item.channelFeatureList}</td>
 			                                </tr>
-			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[6]?JSON.parse(item.descriptions)[6].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[6]?JSON.parse(item.descriptions)[6].value:''}</td>
+			                                 <tr>
+			                                   <th>产地:</th>
+			                                    <td>${item.originArea}</td>
 			                                </tr>
-			                                <tr>
-			                                    <th>${JSON.parse(item.descriptions)[7]?JSON.parse(item.descriptions)[7].name:''}</th>
-			                                    <td>${JSON.parse(item.descriptions)[7]?JSON.parse(item.descriptions)[7].value:''}</td>
+			                                 <tr>
+			                                   <th>货号:</th>
+			                                    <td>${item.sn}</td>
 			                                </tr>
 			                            </tbody>
 			                        </table>

@@ -13,7 +13,7 @@ $(function() {
 				username = temp[1]
 			}
 		})
-		$('.ui-decoration-hyperlink').click(function(){
+		$('.icon-arrow-left').click(function(){
 			console.log(111)
 			history.back();
 		})

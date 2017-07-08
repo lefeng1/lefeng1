@@ -10,8 +10,8 @@ function createConnection() {
     var connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: '',
-        database: 'lefengwang'
+        password: 'root',
+        database: 'lefengnet'
     });	
     return connection
 }
@@ -240,7 +240,7 @@ app.post('/jia',function(req,res){
 
 	// var getid =zhi.zhi;
 	// console.log(zhi)
-	var userAddSql="INSERT INTO user(username,password) VALUES('"+username+"','"+password+"')"
+	var userAddSql="INSERT INTO register(username,password) VALUES('"+username+"','"+password+"')"
 		 console.log(req.query)
 
 	connection.query(userAddSql,function(error, results, fields){
@@ -249,6 +249,7 @@ app.post('/jia',function(req,res){
 		}
 
 		res.send('ok')
+		register
 	})
 	res.append('Access-Control-Allow-Origin',"*")
 })
@@ -358,7 +359,7 @@ app.post('/gai',function(req,res){
 })
 
 
-// ...............................................................zhang
+
 //进入页面根据username获取商品id
 app.get('/buycarLoad', function(req, res) {
 
@@ -526,7 +527,7 @@ app.get('/delBuyCar', function(req, res) {
 })
 
 
-//.....................................................chuan
+
 //把图片写入文件夹
 app.use(express.static('../uploads'));
 

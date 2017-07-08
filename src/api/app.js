@@ -53,7 +53,7 @@ app.get('/ascending', function(req, res) {
 	//ajax 分页传入
 	var pageCount = 10 * (req.query.page - 1)
 	var Class = req.query.Class;
-	connection.query(`SELECT * FROM goods where class = '${Class}' ORDER BY vipshopPrice asc limit ${pageCount},10`, function(error, results, fields) {
+	connection.query(`SELECT * FROM goods where class = '${Class}' or brandStoreName='${Class}' or name like '%${Class}%' ORDER BY vipshopPrice asc limit ${pageCount},10`, function(error, results, fields) {
 		if(error) throw error;
 		//results =>array类型
 		var obj = {
@@ -73,7 +73,7 @@ app.get('/descending', function(req, res) {
 	//ajax 分页传入
 	var pageCount = 10 * (req.query.page - 1)
 	var Class = req.query.Class;
-	connection.query(`SELECT * FROM goods where class = '${Class}' ORDER BY vipshopPrice desc limit ${pageCount},10`, function(error, results, fields) {
+	connection.query(`SELECT * FROM goods where class = '${Class}' or brandStoreName='${Class}' or name like '%${Class}%' ORDER BY vipshopPrice desc limit ${pageCount},10`, function(error, results, fields) {
 		if(error) throw error;
 		//results =>array类型
 		var obj = {
@@ -319,7 +319,7 @@ app.get('/selectClass', function(req, res) {
 	var Class = req.query.class
 	var connection = createConnection()
 	connection.connect();
-	connection.query(`SELECT brandStoreName FROM goods where class = '${Class}'`, function(rerr, data) {
+	connection.query(`SELECT brandStoreName FROM goods where class = '${Class}' or brandStoreName='${Class}' or name like '%${Class}%' `, function(rerr, data) {
 		for(i = 0; i <= data.length - 2; i++) {
 			for(j = i + 1; j <= data.length - 1; j++) {
 				if(data[i].brandStoreName == data[j].brandStoreName) {

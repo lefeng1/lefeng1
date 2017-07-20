@@ -5,3 +5,4 @@ aaaaaaa.txt
 *.zip
 *.rar
 ./src/api/node_modules
+mysql

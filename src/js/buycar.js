@@ -20,6 +20,9 @@ $(function() {
 		console.log(username)
 		if(username) {
 			console.log('已登录')
+			$('.btn-primary').click(function(){
+				location.href='../index.html?username='+username
+			})
 			$('.SqVnKJSjGIm-VF1dqj8wv').click(function(){
 				location.href='coupon.html?username='+username
 			})

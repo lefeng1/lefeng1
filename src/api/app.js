@@ -10,8 +10,8 @@ function createConnection() {
     var connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'root',
-        database: 'lefengnet'
+        password: '',
+        database: 'app'
     });	
     return connection
 
